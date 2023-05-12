@@ -31,7 +31,7 @@
      <number>0</number>
     </property>
     <item row="0" column="0">
-     <widget class="QPlainTextEdit" name="plainTextEdit"/>
+     <widget class="MyPlainTextEdit" name="plainTextEdit"/>
     </item>
    </layout>
   </widget>
@@ -156,6 +156,16 @@
    </property>
   </action>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>MyPlainTextEdit</class>
+   <extends>QPlainTextEdit</extends>
+   <header>MyPlainTextEdit.h</header>
+   <slots>
+    <slot>openFile()</slot>
+   </slots>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections>
   <connection>
@@ -163,6 +173,22 @@
    <signal>triggered()</signal>
    <receiver>MyForm</receiver>
    <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionOpen</sender>
+   <signal>triggered()</signal>
+   <receiver>plainTextEdit</receiver>
+   <slot>openFile()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>-1</x>
