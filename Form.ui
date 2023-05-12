@@ -52,6 +52,7 @@
     <addaction name="actionOpen"/>
     <addaction name="actionSave"/>
     <addaction name="separator"/>
+    <addaction name="actionClose"/>
     <addaction name="actionExit"/>
    </widget>
    <widget class="QMenu" name="menuEdit">
@@ -153,6 +154,11 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+X</string>
+   </property>
+  </action>
+  <action name="actionClose">
+   <property name="text">
+    <string>Close</string>
    </property>
   </action>
  </widget>
