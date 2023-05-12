@@ -8,7 +8,14 @@ MyPlainTextEdit::MyPlainTextEdit(QWidget *parent) : QPlainTextEdit(parent) {}
 
 void MyPlainTextEdit::openFile() {
     QString filename = QFileDialog::getOpenFileName(this, "Open File:", "/home");
-    QFile file(filename);
-    QTextStream in(&file);
-    this->document()->setPlainText(in.readAll());
+    currentFile = QFile(filename);
+    QTextStream in(&currentFile);
+    if (currentFile.open(QFile::ReadWrite))
+        this->document()->setPlainText(in.readAll());
+}
+
+void MyPlainTextEdit::saveFile() {
+    if (currentFile == NULL) return;
+    QTextStream out(&currentFile);
+    currentFile.write(out.readAll());
 }
