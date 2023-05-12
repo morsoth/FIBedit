@@ -5,7 +5,7 @@ class MyPlainTextEdit : public QPlainTextEdit {
 
 public:
         MyPlainTextEdit(QWidget *parent);
-        QFile currentFile;
+        QFile *currentFile;
 
 public slots:
     void openFile();
