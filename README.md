@@ -2,7 +2,8 @@
 
 #### Install Qt5
 ```sh
-sudo apt install 
+sudo apt update
+sudo apt install qt5-qmake qtbase5-dev
 ```
 
 #### Compile
