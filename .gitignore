@@ -3,3 +3,4 @@ moc_*
 fibedit
 *.stash
 Makefile
+ui_Form.h
