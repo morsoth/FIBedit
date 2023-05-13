@@ -28,11 +28,8 @@ public:
 private:
     Ui::MyForm ui;
     QFileSystemWatcher *watcher;
-<<<<<<< HEAD
-    void setupLangs();
-=======
+
     void setupLangMap();
->>>>>>> 2446dc44ba635075e3fdc1a97f6c7532a1b3dd96
 
 public slots:
     void newFile();
@@ -56,9 +53,6 @@ signals:
     void column(const QString &c);
     void fileSize(const QString &s);
     void tabChanged();
-<<<<<<< HEAD
-};
-=======
 };
 
 void MyForm::setupLangMap() {
@@ -98,4 +92,3 @@ void MyForm::setupLangMap() {
         {".yml", "Yaml"},
     };
 }
->>>>>>> 2446dc44ba635075e3fdc1a97f6c7532a1b3dd96
