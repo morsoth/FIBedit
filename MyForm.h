@@ -22,6 +22,7 @@ public slots:
     void closeFile();
     void closeFile(int index);
     void onFileChanged(const QString &path);
+    int existsFile(const QString &path);
 
     QWidget* getCurrentTab();
     MyPlainTextEdit* getCurrentText();
