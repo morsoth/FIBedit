@@ -43,7 +43,8 @@ void MyForm::saveFile() {
 void MyForm::closeFile() {
     if (ui.tabWidget->count() == 0) return;
     //check if is not saved
-    watcher->removePath(getCurrentText()->file->fileName());
+    if (getCurrentText()->file != nullptr)
+        watcher->removePath(getCurrentText()->file->fileName());
     QWidget *tab = getCurrentTab();
     tab->close();
     delete tab;
@@ -51,7 +52,8 @@ void MyForm::closeFile() {
 
 void MyForm::closeFile(int index) {
     if (ui.tabWidget->count() == 0) return;
-    watcher->removePath(getTextByIndex(index)->file->fileName());
+    if (getCurrentText()->file != nullptr)
+        watcher->removePath(getTextByIndex(index)->file->fileName());
     //check if is not saved
     ui.tabWidget->removeTab(index);
 }
