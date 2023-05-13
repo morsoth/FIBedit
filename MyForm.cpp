@@ -7,6 +7,7 @@ MyForm::MyForm(QWidget *parent) : QMainWindow(parent) {
     connect(ui.tabWidget, SIGNAL(currentChanged(int)), this, SIGNAL(tabChanged()));
     connect(this, SIGNAL(tabChanged()), this, SLOT(onCursorChanged()));
     connect(this, SIGNAL(tabChanged()), this, SLOT(showFileSize()));
+    connect(this, SIGNAL(tabChanged()), this, SLOT(showLanguage()));
 
     defaultTheme = {
         "default",
@@ -23,39 +24,52 @@ MyForm::MyForm(QWidget *parent) : QMainWindow(parent) {
     );
         
     languages = {
-        {".cpp", "C++"},
-        {".hpp", "C++"},
-        {".cc", "C++"},
-        {".hh", "C++"},
-        {".c", "C"},
-        {".h", "C"},
-        {".txt", "Plain Text"},
-        {".py", "Python"},
-        {".java", "Java"},
-        {".html", "HTML"},
-        {".css", "CSS"},
-        {".js", "JavaScript"},
-        {".xml", "XML"},
-        {".json", "JSON"},
-        {".sql", "SQL"},
-        {".md", "Markdown"},
-        {".sh", "Shell"},
-        {".bash", "Bash"},
-        {".el", "Emacs Lisp"},
-        {".lua", "Lua"},
-        {".scm", "Scheme"},
-        {".lisp", "Common Lisp"},
-        {".php", "PHP"},
-        {".cs", "C#"},
-        {".go", "Go"},
-        {".kt", "Kotlin"},
-        {".swift", "Swift"},
-        {".rs", "Rust"},
-        {".rb", "Ruby"},
-        {".ts", "TypeScript"},
-        {".org", "Org"},
-        {".yml", "Yaml"},
+        {"cpp", "C++"},
+        {"hpp", "C++"},
+        {"cc", "C++"},
+        {"hh", "C++"},
+        {"c", "C"},
+        {"h", "C"},
+        {"txt", "Plain Text"},
+        {"py", "Python"},
+        {"java", "Java"},
+        {"html", "HTML"},
+        {"css", "CSS"},
+        {"js", "JavaScript"},
+        {"xml", "XML"},
+        {"json", "JSON"},
+        {"sql", "SQL"},
+        {"md", "Markdown"},
+        {"sh", "Shell"},
+        {"bash", "Bash"},
+        {"el", "Emacs Lisp"},
+        {"lua", "Lua"},
+        {"scm", "Scheme"},
+        {"lisp", "Common Lisp"},
+        {"php", "PHP"},
+        {"cs", "C#"},
+        {"go", "Go"},
+        {"kt", "Kotlin"},
+        {"swift", "Swift"},
+        {"rs", "Rust"},
+        {"rb", "Ruby"},
+        {"ts", "TypeScript"},
+        {"org", "Org"},
+        {"yml", "Yaml"},
     };
+}
+
+QString MyForm::guessLang() {
+    QString::const_iterator it = getCurrentText()->file->fileName().end();
+    --it;
+    QString ext;
+    while (it != getCurrentText()->file->fileName().begin() and *it != '.') {
+        ext.prepend(*it);
+        --it;
+    }
+    std::map<QString, QString>::iterator guess = languages.find(ext);
+    if (guess == languages.end()) return "?";
+    else return guess->second;
 }
 
 void MyForm::showFileSize() {
@@ -65,6 +79,14 @@ void MyForm::showFileSize() {
     }
     QString size = QString::number((unsigned int)getCurrentText()->file->size());
     emit fileSize("size: " + size + " B");
+}
+
+void MyForm::showLanguage() {
+    if (ui.tabWidget->count() == 0 or getCurrentText()->file == nullptr) {
+        emit lang("-");
+        return;
+    }
+    emit lang(guessLang());
 }
 
 void MyForm::newFile() {
@@ -92,6 +114,7 @@ void MyForm::openFile() {
         nfile->close();
         watcher->addPath(nfile->fileName());
         showFileSize();
+        showLanguage();
     }
 }
 
@@ -110,6 +133,7 @@ void MyForm::saveFile() {
         getCurrentText()->file->close();
         watcher->addPath(getCurrentText()->file->fileName());
         showFileSize();
+        showLanguage();
     }
 }
 

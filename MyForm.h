@@ -27,6 +27,7 @@ public:
 private:
     Ui::MyForm ui;
     QFileSystemWatcher *watcher;
+    QString guessLang();
 
 public slots:
     void newFile();
@@ -38,6 +39,7 @@ public slots:
     void onCursorChanged();
     int existsFile(const QString &path);
     void showFileSize();
+    void showLanguage();
 
 private slots:
     QWidget *getCurrentTab();
