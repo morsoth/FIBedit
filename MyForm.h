@@ -39,6 +39,7 @@ public slots:
     void onFileChanged(const QString &path);
     void onCursorChanged();
     int existsFile(const QString &path);
+    void showFileSize();
 
 private slots:
     QWidget *getCurrentTab();

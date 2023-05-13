@@ -6,6 +6,7 @@ MyForm::MyForm(QWidget *parent) : QMainWindow(parent) {
     connect(watcher, SIGNAL(fileChanged(QString)), this, SLOT(onFileChanged(QString)));
     connect(ui.tabWidget, SIGNAL(currentChanged(int)), this, SIGNAL(tabChanged()));
     connect(this, SIGNAL(tabChanged()), this, SLOT(onCursorChanged()));
+    connect(this, SIGNAL(tabChanged()), this, SLOT(showFileSize()));
 
     defaultTheme = {
         "default",
@@ -20,6 +21,15 @@ MyForm::MyForm(QWidget *parent) : QMainWindow(parent) {
         "background-color: " + defaultTheme.backgroundColor + ";" +
         "selection-background-color: " + defaultTheme.secondaryColor + ";"
     );
+}
+
+void MyForm::showFileSize() {
+    if (ui.tabWidget->count() == 0 or getCurrentText()->file == nullptr) {
+        emit fileSize("-");
+        return;
+    }
+    QString size = QString::number((unsigned int)getCurrentText()->file->size());
+    emit fileSize("size: " + size + " B");
 }
 
 void MyForm::newFile() {
@@ -46,6 +56,7 @@ void MyForm::openFile() {
         getCurrentText()->setPlainText(in.readAll());
         nfile->close();
         watcher->addPath(nfile->fileName());
+        showFileSize();
     }
 }
 
@@ -63,8 +74,7 @@ void MyForm::saveFile() {
         out << text;
         getCurrentText()->file->close();
         watcher->addPath(getCurrentText()->file->fileName());
-        QString size = QString::number((unsigned int)getCurrentText()->file->size());
-        emit fileSize(size);
+        showFileSize();
     }
 }
 
@@ -95,15 +105,6 @@ void MyForm::onFileChanged(const QString &path) {
         watcher->addPath(path);
     }
 }
-
-/* void MainWindow::onTextChanged() {
-    QTextCursor cursor = ui->plainTextEdit->textCursor();
-    int linea = cursor.blockNumber() + 1; // El número de línea comienza en 0
-    int columna = cursor.columnNumber() + 1; // El número de columna comienza en 0
-
-    // Actualizar la etiqueta que muestra la línea y la columna
-    ui->etiquetaLineaColumna->setText(QString("Línea %1, columna %2").arg(linea).arg(columna));
-} */
 
 void MyForm::onCursorChanged() {
     if (ui.tabWidget->count() == 0) {
