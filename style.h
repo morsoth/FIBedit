@@ -11,8 +11,6 @@ struct Theme {
     QString detailColor;
 };
 
-//36 - 45 - 60 - 209 - (250, 210, 60)
-
 class Style {
 private:
     static std::map<QString, Theme> themes;
