@@ -28,7 +28,7 @@ public:
 private:
     Ui::MyForm ui;
     QFileSystemWatcher *watcher;
-    //void setupLangs();
+    void setupLangs();
 
 public slots:
     void newFile();
