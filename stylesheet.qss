@@ -1,0 +1,5 @@
+QMainWindow {
+    color: rgb(209, 209, 209);
+    background-color: rgb(45, 45, 45);
+    selection-background-color: rgb(60, 60, 60);
+}
