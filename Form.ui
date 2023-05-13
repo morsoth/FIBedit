@@ -55,7 +55,7 @@
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
-        <string>Tab 1</string>
+        <string>Tab 2</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout_2">
         <property name="leftMargin">
@@ -282,8 +282,8 @@
   <connection>
    <sender>actionNew</sender>
    <signal>triggered()</signal>
-   <receiver>plainTextEdit</receiver>
-   <slot>newFile()</slot>
+   <receiver>MyForm</receiver>
+   <slot>newTab()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>-1</x>
@@ -296,4 +296,7 @@
    </hints>
   </connection>
  </connections>
+ <slots>
+  <slot>newTab()</slot>
+ </slots>
 </ui>
