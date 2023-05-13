@@ -11,8 +11,5 @@ class MyPlainTextEdit : public QPlainTextEdit {
 public:
     MyPlainTextEdit(QWidget *parent);
     QFile *file;
-    //QDateTime lastModified;
     bool modified;
-
-    void loadFile();
 };
