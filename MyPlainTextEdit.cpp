@@ -77,7 +77,7 @@ void MyPlainTextEdit::highlightCurrentLine()
     if (!isReadOnly()) {
         QTextEdit::ExtraSelection selection;
 
-        QColor lineColor = QColor(Qt::black).lighter(160);
+        QColor lineColor = QColor("#2d2d2d");
 
         selection.format.setBackground(lineColor);
         selection.format.setProperty(QTextFormat::FullWidthSelection, true);
@@ -96,7 +96,7 @@ void MyPlainTextEdit::highlightCurrentLine()
 void MyPlainTextEdit::lineNumberAreaPaintEvent(QPaintEvent *event)
 {
     QPainter painter(lineNumberArea);
-    painter.fillRect(event->rect(), Qt::lightGray);
+    painter.fillRect(event->rect(), "#999999");
 
 //![extraAreaPaintEvent_0]
 

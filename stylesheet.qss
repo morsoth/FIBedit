@@ -36,14 +36,6 @@ MyPlainTextEdit {
     background-color: rgb(36, 36, 36);
 }
 
-MyPlainTextEdit::ExtraSelection {
-    color: rgb(255, 0, 0);
-}
-
-LineNumberArea {
-    background-color: rgb(255, 0, 0);
-}
-
 QMenuBar {
     color: rgb(209, 209, 209);
     background-color: rgb(45, 45, 45);
