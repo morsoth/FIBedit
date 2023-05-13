@@ -1,0 +1,17 @@
+Bugs
+    Arreglar el closeTab para que no cierre paths no abiertos
+
+Save as (opcional)
+
+Tabs
+    Titulos
+
+Barra de estado
+    Tamaño (KB)
+    Lenguaje
+    Posicion
+
+Preferencias
+    Color de fondo
+    Color de fuente
+    Tipo de fuente
