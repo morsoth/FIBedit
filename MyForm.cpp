@@ -2,9 +2,13 @@
 
 MyForm::MyForm(QWidget *parent) : QMainWindow(parent) {
     ui.setupUi(this);
+    /*
     timer = new QTimer();
     connect(timer, &QTimer::timeout, this, &MyForm::checkFileChanged);
     timer->start(5);
+    */
+    watcher = new QFileSystemWatcher(this);
+    connect(watcher, SIGNAL(fileChanged(QString)), this, SLOT(onFileChanged(QString)));
 }
 
 void MyForm::newFile() {
@@ -13,7 +17,7 @@ void MyForm::newFile() {
 }
 
 void MyForm::openFile() {
-    QString path = QFileDialog::getOpenFileName(this, "Open File:", "~");
+    QString path = QFileDialog::getOpenFileName(this, "Open File:");
     QFile *nfile = new QFile(path);
     if (nfile->open(QFile::ReadOnly)) {
         newFile();
@@ -21,7 +25,8 @@ void MyForm::openFile() {
         QTextStream in(nfile);
         getCurrentText()->setPlainText(in.readAll());
         nfile->close();
-        getCurrentText()->lastModified = getCurrentText()->file->fileTime(QFileDevice::FileModificationTime);
+        watcher->addPath(nfile->fileName());
+        //getCurrentText()->lastModified = getCurrentText()->file->fileTime(QFileDevice::FileModificationTime);
     }
 }
 
@@ -35,13 +40,14 @@ void MyForm::saveFile() {
         QTextStream out(getCurrentText()->file);
         out << text;
         getCurrentText()->file->close();
-        getCurrentText()->lastModified = getCurrentText()->file->fileTime(QFileDevice::FileModificationTime);
+        //getCurrentText()->lastModified = getCurrentText()->file->fileTime(QFileDevice::FileModificationTime);
     }
 }
 
 void MyForm::closeFile() {
     if (ui.tabWidget->count() == 0) return;
     //check if is not saved
+    watcher->removePath(getCurrentText()->file->fileName());
     QWidget *tab = getCurrentTab();
     tab->close();
     delete tab;
@@ -53,11 +59,21 @@ void MyForm::closeFile(int index) {
     ui.tabWidget->removeTab(index);
 }
 
+void MyForm::onFileChanged(const QString &path) {
+    if (getTextByPath(path)->file->open(QFile::ReadOnly)) {
+        QTextStream in(getTextByPath(path)->file);
+        getTextByPath(path)->setPlainText(in.readAll());
+        getTextByPath(path)->file->close();
+    }
+}
+
+/*
 void MyForm::checkFileChanged() {
     if (ui.tabWidget->count() == 0) return;
     if (getCurrentText()->lastModified != getCurrentText()->file->fileTime(QFileDevice::FileModificationTime))
         fprintf(stderr, "paco que grande!!\n");
 }
+*/
 
 QWidget* MyForm::getCurrentTab() {
     return dynamic_cast<QWidget*>(ui.tabWidget->currentWidget());
@@ -65,4 +81,11 @@ QWidget* MyForm::getCurrentTab() {
 
 MyPlainTextEdit* MyForm::getCurrentText() {
     return dynamic_cast<MyPlainTextEdit*>(ui.tabWidget->currentWidget());
+}
+
+MyPlainTextEdit* MyForm::getTextByPath(const QString &path) {
+    for (int i = 0; i < ui.tabWidget->count(); ++i) {
+        if (dynamic_cast<MyPlainTextEdit*>(ui.tabWidget->widget(i))->file->fileName() == path)
+            return dynamic_cast<MyPlainTextEdit*>(ui.tabWidget->widget(i));
+    }
 }
