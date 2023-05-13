@@ -8,14 +8,6 @@ MyForm::MyForm(QWidget *parent) : QMainWindow(parent) {
     connect(this, SIGNAL(tabChanged()), this, SLOT(onCursorChanged()));
     connect(this, SIGNAL(tabChanged()), this, SLOT(showFileSize()));
     connect(this, SIGNAL(tabChanged()), this, SLOT(showLanguage()));
-
-    defaultTheme = {
-        "default",
-        "rgb(45, 45, 45)",
-        "rgb(209, 209, 209)",
-        "rgb(60, 60, 60)",
-        "mononoki NF", 12
-    };
         
     languages = {
         {"cpp", "C++"},
