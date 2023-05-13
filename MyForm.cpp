@@ -114,7 +114,7 @@ void MyForm::openFile() {
         nfile->close();
         watcher->addPath(nfile->fileName());
         showFileSize();
-        showLanguage();
+        //showLanguage();
     }
 }
 
