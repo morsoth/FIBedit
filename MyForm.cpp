@@ -109,7 +109,9 @@ void MyForm::setUnmodified() {
 void MyForm::showHelp(){
     QMessageBox msgBox;
     msgBox.setText("Thanks for using FIBedit!");
-    msgBox.setInformativeText("Here are some key combinations:\nCtrl+C\tCopy selected text\nCtrl+V\tPaste selected text.");
+    msgBox.setInformativeText("Here are some key combinations:\nCtrl+C\tCopy selected text\nCtrl+V\tPaste selected text"
+            "\nCtrl+Z\tUndo last changes\nCtrl+Shift+Z\tRedo last changes\nCtrl+A\tSelect all file\nCtrl+O\tOpen file from disk"
+            "\nCtrl+N\tNew blank file\nCtrl+S\tSave file to disk\nCtrl+W\tClose file");
     msgBox.setStandardButtons(QMessageBox::Ok);
     msgBox.setDefaultButton(QMessageBox::Ok);
     msgBox.setIcon(QMessageBox::Information);
