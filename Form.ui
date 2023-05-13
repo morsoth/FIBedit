@@ -70,7 +70,7 @@
       <item>
        <widget class="QLabel" name="label_2">
         <property name="text">
-         <string>size</string>
+         <string>-</string>
         </property>
        </widget>
       </item>
@@ -336,8 +336,8 @@
      <y>592</y>
     </hint>
     <hint type="destinationlabel">
-     <x>773</x>
-     <y>317</y>
+     <x>426</x>
+     <y>587</y>
     </hint>
    </hints>
   </connection>
@@ -352,8 +352,24 @@
      <y>590</y>
     </hint>
     <hint type="destinationlabel">
-     <x>798</x>
-     <y>316</y>
+     <x>622</x>
+     <y>586</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>MyForm</sender>
+   <signal>fileSize(QString)</signal>
+   <receiver>label_2</receiver>
+   <slot>setText(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>200</x>
+     <y>595</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>266</x>
+     <y>582</y>
     </hint>
    </hints>
   </connection>
@@ -361,6 +377,7 @@
  <slots>
   <signal>line(QString)</signal>
   <signal>column(QString)</signal>
+  <signal>fileSize(QString)</signal>
   <slot>newTab()</slot>
   <slot>newFile()</slot>
   <slot>openFile()</slot>
