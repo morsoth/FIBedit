@@ -101,6 +101,7 @@ void MyForm::onFileChanged(const QString &path) {
         watcher->removePath(path);
         QTextStream in(getTextByPath(path)->file);
         getTextByPath(path)->setPlainText(in.readAll());
+        showFileSize();
         getTextByPath(path)->file->close();
         watcher->addPath(path);
     }
