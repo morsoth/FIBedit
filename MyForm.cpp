@@ -4,9 +4,15 @@ MyForm::MyForm(QWidget *parent) : QMainWindow(parent) {
     ui.setupUi(this);
     watcher = new QFileSystemWatcher(this);
     connect(watcher, SIGNAL(fileChanged(QString)), this, SLOT(onFileChanged(QString)));
+    connect(ui.tabWidget, SIGNAL(currentChanged(int)), this, SIGNAL(tabChanged()));
+    connect(this, SIGNAL(tabChanged()), this, SLOT(onCursorChanged()));
 
     defaultTheme = {
-        "default", "rgb(45, 45, 45)", "rgb(209, 209, 209)", "rgb(60, 60, 60)", "JetBrainsMonoNL NF", 14
+        "default",
+        "rgb(45, 45, 45)",
+        "rgb(209, 209, 209)",
+        "rgb(60, 60, 60)",
+        "JetBrainsMonoNL NF", 14
     };
 
     setStyleSheet(
@@ -19,6 +25,7 @@ MyForm::MyForm(QWidget *parent) : QMainWindow(parent) {
 void MyForm::newFile() {
     ui.tabWidget->insertTab(ui.tabWidget->count(), new MyPlainTextEdit(this), QIcon(QString("")), "New File");
     ui.tabWidget->setCurrentIndex(ui.tabWidget->count()-1);
+    connect(getCurrentText(), SIGNAL(cursorPositionChanged()), this, SLOT(onCursorChanged()));
     getCurrentTab()->setFont(QFont(defaultTheme.fontName, defaultTheme.fontSize));
 }
 
@@ -96,10 +103,15 @@ void MyForm::onFileChanged(const QString &path) {
     ui->etiquetaLineaColumna->setText(QString("Línea %1, columna %2").arg(linea).arg(columna));
 } */
 
-void MyForm::onTextChanged() {
+void MyForm::onCursorChanged() {
+    if (ui.tabWidget->count() == 0) {
+        emit line("-");
+        emit column("-");
+        return;
+    }
     QTextCursor cursor = getCurrentText()->textCursor();
-    emit line(QString::number(cursor.blockNumber() + 1));
-    emit column(QString::number(cursor.columnNumber() + 1));
+    emit line("lin: " + QString::number(cursor.blockNumber() + 1));
+    emit column("col: " + QString::number(cursor.columnNumber() + 1));
 }
 
 QWidget* MyForm::getCurrentTab() {

@@ -32,7 +32,7 @@ public slots:
     void closeFile();
     void closeFile(int index);
     void onFileChanged(const QString &path);
-    void onTextChanged();
+    void onCursorChanged();
     int existsFile(const QString &path);
 
 private slots:
@@ -44,4 +44,5 @@ private slots:
 signals:
     void line(const QString &l);
     void column(const QString &c);
+    void tabChanged();
 };
