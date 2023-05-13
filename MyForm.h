@@ -5,7 +5,6 @@
 #include <QFile>
 #include <QTextStream>
 #include "MyPlainTextEdit.h"
-
 #include <map>
 
 struct Theme {
@@ -22,7 +21,7 @@ class MyForm : public QMainWindow {
 
 public:
     MyForm(QWidget *parent = 0);
-    std::map<QString, QString> languages; //TODO
+    std::map<QString, QString> languages;
     Theme defaultTheme;
 
 private:
@@ -50,5 +49,6 @@ signals:
     void line(const QString &l);
     void column(const QString &c);
     void fileSize(const QString &s);
+    void lang(const QString &g);
     void tabChanged();
 };
