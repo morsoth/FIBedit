@@ -1,19 +1,8 @@
-Bugs
-    nada! :D
-
-Save as (opcional)
-
-Barra de estado
-    Tamaño (KB)
-    Lenguaje
-    Posicion
-
 Preferencias
     Color de fondo
     Color de fuente
     Tipo de fuente
     Tamaño de fuente
-    
     Tamaño tabulaciones
 
 Autocompletar
