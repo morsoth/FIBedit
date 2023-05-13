@@ -135,7 +135,6 @@ void MyForm::saveFile() {
         showFileSize();
         showLanguage();
     }
-    fprintf(stderr, "HOLA");
 }
 
 void MyForm::closeFile() {
