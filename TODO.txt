@@ -1,6 +1,5 @@
 Bugs
-    Arreglar el closeTab para que no cierre paths no abiertos
-    Si guardas un new file, cancelas y guardas hay errores
+    nada! :D
 
 Save as (opcional)
 

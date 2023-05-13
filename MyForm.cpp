@@ -13,6 +13,7 @@ void MyForm::newFile() {
 
 void MyForm::openFile() {
     QString path = QFileDialog::getOpenFileName(this, "Open File:");
+    if (path == "") return;
     QFile *nfile = new QFile(path);
     if (nfile->open(QFile::ReadOnly)) {
         newFile();
@@ -28,6 +29,7 @@ void MyForm::openFile() {
 void MyForm::saveFile() {
     if (getCurrentText()->file == nullptr) {
         QString path = QFileDialog::getSaveFileName(this, "Save File As:");
+        if (path == "") return;
         getCurrentText()->file = new QFile(path);
         ui.tabWidget->setTabText(ui.tabWidget->currentIndex(), QFileInfo(*(getCurrentText()->file)).fileName());
     }
