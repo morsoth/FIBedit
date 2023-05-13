@@ -64,7 +64,7 @@ void MyForm::showFileSize() {
         return;
     }
     QString size = QString::number((unsigned int)getCurrentText()->file->size());
-    emit fileSize("size: " + size + " B");
+    emit fileSize("size: " + size + " bytes");
 }
 
 void MyForm::showLanguage() {
