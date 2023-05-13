@@ -5,6 +5,6 @@ MyForm::MyForm(QWidget *parent) : QMainWindow(parent) {
 }
 
 void MyForm::newTab() {
-    ui->tabWidget->insertTab(ui->tabWidget->count(), new QWidget, QIcon(QString("")), "New File");
-    ui->tabWidget.setCurrentIndex(ui->tabWidget->count()-1);
+    ui.tabWidget->insertTab(ui.tabWidget->count(), new QWidget, QIcon(QString("")), "New File");
+    ui.tabWidget->setCurrentIndex(ui.tabWidget->count()-1);
 }
