@@ -113,6 +113,7 @@ void MyForm::newFile() {
     connect(getCurrentText(), SIGNAL(textChanged()), this, SLOT(setModified()));
     getCurrentTab()->setFont(QFont(defaultTheme.fontName, defaultTheme.fontSize));
     setUnmodified();
+    getCurrentText()->saved = true;
 }
 
 void MyForm::openFile() {
@@ -135,6 +136,7 @@ void MyForm::openFile() {
         showFileSize();
         showLanguage();
         setUnmodified();
+        getCurrentText()->saved = true;
     }
 }
 
