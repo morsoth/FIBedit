@@ -19,8 +19,42 @@ MyForm::MyForm(QWidget *parent) : QMainWindow(parent) {
     setStyleSheet(
         "color: " + defaultTheme.fontColor + ";" + 
         "background-color: " + defaultTheme.backgroundColor + ";" +
-        "selection-background-color: " + defaultTheme.secondaryColor + ";"
-    );
+        "selection-background-color: " + defaultTheme.secondaryColor + ";");
+        
+    languages = {
+        {".cpp", "C++"},
+        {".hpp", "C++"},
+        {".cc", "C++"},
+        {".hh", "C++"},
+        {".c", "C"},
+        {".h", "C"},
+        {".txt", "Plain Text"},
+        {".py", "Python"},
+        {".java", "Java"},
+        {".html", "HTML"},
+        {".css", "CSS"},
+        {".js", "JavaScript"},
+        {".xml", "XML"},
+        {".json", "JSON"},
+        {".sql", "SQL"},
+        {".md", "Markdown"},
+        {".sh", "Shell"},
+        {".bash", "Bash"},
+        {".el", "Emacs Lisp"},
+        {".lua", "Lua"},
+        {".scm", "Scheme"},
+        {".lisp", "Common Lisp"},
+        {".php", "PHP"},
+        {".cs", "C#"},
+        {".go", "Go"},
+        {".kt", "Kotlin"},
+        {".swift", "Swift"},
+        {".rs", "Rust"},
+        {".rb", "Ruby"},
+        {".ts", "TypeScript"},
+        {".org", "Org"},
+        {".yml", "Yaml"},
+    };
 }
 
 void MyForm::showFileSize() {
