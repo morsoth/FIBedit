@@ -32,3 +32,14 @@ signals:
     //void line(int l);
     //void column(int c);
 };
+
+/* void MainWindow::onTextChanged()
+{
+    QTextCursor cursor = ui->plainTextEdit->textCursor();
+    int linea = cursor.blockNumber() + 1; // El número de línea comienza en 0
+    int columna = cursor.columnNumber() + 1; // El número de columna comienza en 0
+
+    // Actualizar la etiqueta que muestra la línea y la columna
+    ui->etiquetaLineaColumna->setText(QString("Línea %1, columna %2").arg(linea).arg(columna));
+} */
+
