@@ -192,8 +192,8 @@ MyPlainTextEdit* MyForm::getTextByIndex(int index) {
 
 MyPlainTextEdit* MyForm::getTextByPath(const QString &path) {
     for (int i = 0; i < ui.tabWidget->count(); ++i) {
-        if (getTextByIndex(i)->file->fileName() == path)
-            return getTextByIndex(i);
+        if (getTextByIndex(i)->file != nullptr)
+            if (getTextByIndex(i)->file->fileName() == path) return getTextByIndex(i);
     }
     return nullptr;
 }
