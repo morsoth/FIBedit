@@ -2,7 +2,6 @@
 #include <QFileDialog>
 #include <QFile>
 #include <QTextStream>
-#include <QTimer>
 #include "MyPlainTextEdit.h"
 
 class MyForm : public QMainWindow {
