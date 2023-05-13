@@ -85,6 +85,21 @@ void MyForm::onFileChanged(const QString &path) {
     }
 }
 
+/* void MainWindow::onTextChanged() {
+    QTextCursor cursor = ui->plainTextEdit->textCursor();
+    int linea = cursor.blockNumber() + 1; // El número de línea comienza en 0
+    int columna = cursor.columnNumber() + 1; // El número de columna comienza en 0
+
+    // Actualizar la etiqueta que muestra la línea y la columna
+    ui->etiquetaLineaColumna->setText(QString("Línea %1, columna %2").arg(linea).arg(columna));
+} */
+
+void MyForm::onTextChanged() {
+    QTextCursor cursor = getCurrentText()->textCursor();
+    emit line(QString::number(cursor.blockNumber() + 1));
+    emit column(QString::number(cursor.columnNumber() + 1));
+}
+
 QWidget* MyForm::getCurrentTab() {
     return dynamic_cast<QWidget*>(ui.tabWidget->currentWidget());
 }
