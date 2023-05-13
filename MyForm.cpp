@@ -74,7 +74,12 @@ void MyForm::saveFile() {
         out << text;
         getCurrentText()->file->close();
         watcher->addPath(getCurrentText()->file->fileName());
+<<<<<<< HEAD
         showFileSize();
+=======
+        QString size = QString::number((unsigned int)getCurrentText()->file->size());
+        emit fileSize("size: " + size + " bytes");
+>>>>>>> ab92a445e2045b759f8db66ccdf44fc290f6c85d
     }
 }
 
