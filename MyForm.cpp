@@ -34,7 +34,7 @@ void MyForm::saveFile() {
         QTextStream out(getCurrentText()->file);
         out << text;
         getCurrentText()->file->close();
-        watcher->addPath(nfile->fileName());
+        watcher->addPath(getCurrentText()->file->fileName());
     }
 }
 
