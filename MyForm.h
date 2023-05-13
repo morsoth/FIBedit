@@ -23,14 +23,15 @@ public slots:
     void closeFile(int index);
     void onFileChanged(const QString &path);
 
-    QWidget* getCurrentTab();
-    MyPlainTextEdit* getCurrentText();
-    MyPlainTextEdit* getTextByIndex(int index);
-    MyPlainTextEdit* getTextByPath(const QString &path);
+private slots:
+    QWidget *getCurrentTab();
+    MyPlainTextEdit *getCurrentText();
+    MyPlainTextEdit *getTextByIndex(int index);
+    MyPlainTextEdit *getTextByPath(const QString &path);
 
 signals:
-    //void line(int l);
-    //void column(int c);
+    void line(int l);
+    void column(int c);
 };
 
 /* void MainWindow::onTextChanged()

@@ -3,9 +3,6 @@ Bugs
 
 Save as (opcional)
 
-Tabs
-    Titulos
-
 Barra de estado
     Tamaño (KB)
     Lenguaje
