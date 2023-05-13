@@ -2,14 +2,21 @@
 #include <QFileDialog>
 #include <QFile>
 #include <QTextStream>
-#include <QTimer>
 #include "MyPlainTextEdit.h"
+
+struct Theme {
+    QString themeName;
+    QString backgroundColor;
+    QString fontColor;
+};
 
 class MyForm : public QMainWindow {
     Q_OBJECT
 
 public:
     MyForm(QWidget *parent = 0);
+
+    Theme theme;
 
 private:
     Ui::MyForm ui;
@@ -22,6 +29,7 @@ public slots:
     void closeFile();
     void closeFile(int index);
     void onFileChanged(const QString &path);
+    int existsFile(const QString &path);
 
 private slots:
     QWidget *getCurrentTab();

@@ -4,6 +4,15 @@ MyForm::MyForm(QWidget *parent) : QMainWindow(parent) {
     ui.setupUi(this);
     watcher = new QFileSystemWatcher(this);
     connect(watcher, SIGNAL(fileChanged(QString)), this, SLOT(onFileChanged(QString)));
+
+    theme = {
+        "default", "rgb(21, 21, 21)", "rgb(209, 209, 209)"
+    };
+
+    setStyleSheet(
+        "color: " + theme.fontColor + ";" + 
+        "background-color: " + theme.backgroundColor + ";"
+    );
 }
 
 void MyForm::newFile() {
@@ -14,6 +23,11 @@ void MyForm::newFile() {
 void MyForm::openFile() {
     QString path = QFileDialog::getOpenFileName(this, "Open File:");
     if (path == "") return;
+    int index = existsFile(path);
+    if(index != -1){
+        ui.tabWidget->setCurrentIndex(index);
+        return;
+    }
     QFile *nfile = new QFile(path);
     if (nfile->open(QFile::ReadOnly)) {
         newFile();
@@ -88,4 +102,11 @@ MyPlainTextEdit* MyForm::getTextByPath(const QString &path) {
         if (getTextByIndex(i)->file->fileName() == path)
             return getTextByIndex(i);
     }
+    return nullptr;
+}
+int MyForm::existsFile(const QString &path){
+    for (int i = 0; i < ui.tabWidget->count(); ++i) {
+        if (getTextByIndex(i)->file->fileName() == path) return i;
+    }
+    return -1;
 }
