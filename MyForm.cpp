@@ -101,11 +101,11 @@ void MyForm::setUnmodified() {
 void MyForm::showHelp(){
     QMessageBox msgBox;
     msgBox.setText("Thanks for using FIBedit!");
-    msgBox.setInformativeText("Here are some key combinations:\n");
+    msgBox.setInformativeText("Here are some key combinations:\nCtrl+C\tCopy selected text\nCtrl+V\tPaste selected text.");
     msgBox.setStandardButtons(QMessageBox::Ok);
     msgBox.setDefaultButton(QMessageBox::Ok);
     msgBox.setIcon(QMessageBox::Information);
-    msgBox.setWindowTitle("Información");
+    msgBox.setWindowTitle("Information");
     msgBox.setWindowFlags(msgBox.windowFlags() | Qt::WindowCloseButtonHint); // Agregar el botón de cerrar
     msgBox.exec();
 }
