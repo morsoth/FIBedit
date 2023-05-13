@@ -1,8 +1,12 @@
+#pragma once
+
 #include "ui_Form.h"
 #include <QFileDialog>
 #include <QFile>
 #include <QTextStream>
 #include "MyPlainTextEdit.h"
+
+#include <map>
 
 struct Theme {
     QString themeName;
@@ -11,6 +15,12 @@ struct Theme {
     QString secondaryColor;
     QString fontName;
     int fontSize;
+};
+
+std::map<QString, QString> languages = {
+    {".cc", "C++"},
+    {".cpp", "C++"},
+    {".c", "C"}
 };
 
 class MyForm : public QMainWindow {
