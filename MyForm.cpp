@@ -86,7 +86,7 @@ void MyForm::showLanguage() {
         emit lang("-");
         return;
     }
-    emit lang(guessLang());
+    emit lang("lang: " + guessLang());
 }
 
 void MyForm::newFile() {
@@ -198,7 +198,8 @@ MyPlainTextEdit* MyForm::getTextByPath(const QString &path) {
 }
 int MyForm::existsFile(const QString &path){
     for (int i = 0; i < ui.tabWidget->count(); ++i) {
-        if (getTextByIndex(i)->file->fileName() == path) return i;
+        if (getTextByIndex(i)->file != nullptr)
+            if (getTextByIndex(i)->file->fileName() == path) return i;
     }
     return -1;
 }
