@@ -4,7 +4,7 @@
 /FIB's (un)official text editor./
 
 #+attr_html: :width 1000
-[[file:captura.png]]
+[[file:img/captura.png]]
 
 ** Istallation
 *** Install Qt5
