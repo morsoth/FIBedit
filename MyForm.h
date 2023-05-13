@@ -8,6 +8,9 @@ struct Theme {
     QString themeName;
     QString backgroundColor;
     QString fontColor;
+    QString secondaryColor;
+    QString fontName;
+    int fontSize;
 };
 
 class MyForm : public QMainWindow {
@@ -16,7 +19,7 @@ class MyForm : public QMainWindow {
 public:
     MyForm(QWidget *parent = 0);
 
-    Theme theme;
+    Theme defaultTheme;
 
 private:
     Ui::MyForm ui;
