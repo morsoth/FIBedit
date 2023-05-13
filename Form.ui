@@ -39,7 +39,7 @@
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>-1</number>
       </property>
       <property name="usesScrollButtons">
        <bool>true</bool>
@@ -56,11 +56,6 @@
       <property name="tabBarAutoHide">
        <bool>false</bool>
       </property>
-      <widget class="QWidget" name="tab">
-       <attribute name="title">
-        <string>Página</string>
-       </attribute>
-      </widget>
      </widget>
     </item>
    </layout>
