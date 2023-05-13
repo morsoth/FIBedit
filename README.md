@@ -4,7 +4,7 @@
 
 ![](img/captura3.png)
 
-## Istallation
+## Installation
 ### Install Qt5
 Qt5 libraries are required to compile and run fibedit.
 
