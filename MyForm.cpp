@@ -63,7 +63,7 @@ void MyForm::saveFile() {
         out << text;
         getCurrentText()->file->close();
         watcher->addPath(getCurrentText()->file->fileName());
-        Qstring size = Qstring::number((unsigned int)getCurrentText()->file->size());
+        QString size = QString::number((unsigned int)getCurrentText()->file->size());
         emit fileSize(size);
     }
 }

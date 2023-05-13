@@ -22,13 +22,13 @@ class MyForm : public QMainWindow {
 
 public:
     MyForm(QWidget *parent = 0);
-    std::map<QString, QString> languages; //TODO
-
+    static std::map<QString, QString> languages; //TODO
     Theme defaultTheme;
 
 private:
     Ui::MyForm ui;
     QFileSystemWatcher *watcher;
+    //void setupLangs();
 
 public slots:
     void newFile();
