@@ -5,7 +5,7 @@ Preferencias
     Tamaño de fuente
     Tamaño tabulacionesa
 
-Autocompletar
+Autocompletado
     Parentesis
 
 cositas xd
