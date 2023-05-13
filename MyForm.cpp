@@ -18,3 +18,8 @@ void MyForm::closeTab() {
     delete tab;
     tab = NULL;
 }
+
+void MyForm::closeTab(int index) {
+    if (ui.tabWidget->count() == 0) return;
+    ui.tabWidget->removeTab(index);
+}
