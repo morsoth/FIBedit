@@ -8,12 +8,22 @@
 #include <map>
 #include <QMessageBox>
 
+struct Theme {
+    QString themeName;
+    QString backgroundColor;
+    QString fontColor;
+    QString secondaryColor;
+    QString fontName;
+    int fontSize;
+};
+
 class MyForm : public QMainWindow {
     Q_OBJECT
 
 public:
     MyForm(QWidget *parent = 0);
     std::map<QString, QString> languages;
+    Theme defaultTheme;
 
 private:
     Ui::MyForm ui;
