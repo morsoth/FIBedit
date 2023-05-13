@@ -11,4 +11,5 @@ private:
 
 public slots:
     void newTab();
+    void closeTab();
 };
