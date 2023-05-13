@@ -8,6 +8,7 @@ struct Theme {
     QString themeName;
     QString backgroundColor;
     QString fontColor;
+    QString secondaryColor;
 };
 
 class MyForm : public QMainWindow {

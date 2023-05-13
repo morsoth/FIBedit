@@ -6,12 +6,13 @@ MyForm::MyForm(QWidget *parent) : QMainWindow(parent) {
     connect(watcher, SIGNAL(fileChanged(QString)), this, SLOT(onFileChanged(QString)));
 
     theme = {
-        "default", "rgb(34, 34, 34)", "rgb(209, 209, 209)"
+        "default", "rgb(34, 34, 34)", "rgb(209, 209, 209)", "rgb(45, 45, 45)"
     };
 
     setStyleSheet(
         "color: " + theme.fontColor + ";" + 
-        "background-color: " + theme.backgroundColor + ";"
+        "background-color: " + theme.backgroundColor + ";" +
+        "selection-background-color: " + theme.secondaryColor + ";"
     );
 }
 
