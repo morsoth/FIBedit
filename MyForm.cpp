@@ -17,11 +17,7 @@ MyForm::MyForm(QWidget *parent) : QMainWindow(parent) {
         "mononoki NF", 12
     };
 
-    setStyleSheet(
-        "color: " + defaultTheme.fontColor + ";" + 
-        "background-color: " + defaultTheme.backgroundColor + ";" +
-        "selection-background-color: " + defaultTheme.secondaryColor + ";"
-    );
+    /* setStyleSheet(); */
         
     languages = {
         {"cpp", "C++"},
