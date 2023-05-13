@@ -9,7 +9,7 @@ QTabWidget::pane {
 }
 
 QTabWidget::tab-bar {
-    background-color: rgb(36, 36, 36);
+    
 }
 
 QTabWidget{
@@ -24,6 +24,7 @@ QTabBar::tab {
 }
 
 QTabBar::tab:selected {
+    background-color: rgb(45, 45, 45);
     border-bottom: 2px solid rgb(255, 255, 0);                       
 }
 
