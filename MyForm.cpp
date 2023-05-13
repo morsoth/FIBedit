@@ -12,7 +12,7 @@ MyForm::MyForm(QWidget *parent) : QMainWindow(parent) {
         "rgb(45, 45, 45)",
         "rgb(209, 209, 209)",
         "rgb(60, 60, 60)",
-        "mononoki NF", 16
+        "mononoki NF", 12
     };
 
     setStyleSheet(
@@ -63,6 +63,8 @@ void MyForm::saveFile() {
         out << text;
         getCurrentText()->file->close();
         watcher->addPath(getCurrentText()->file->fileName());
+        Qstring size = Qstring::number((unsigned int)getCurrentText()->file->size());
+        emit fileSize(size);
     }
 }
 
@@ -91,6 +93,7 @@ void MyForm::onFileChanged(const QString &path) {
         getTextByPath(path)->setPlainText(in.readAll());
         getTextByPath(path)->file->close();
         watcher->addPath(path);
+        calcFileSize();
     }
 }
 

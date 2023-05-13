@@ -44,5 +44,6 @@ private slots:
 signals:
     void line(const QString &l);
     void column(const QString &c);
+    void fileSize(const QString &s);
     void tabChanged();
 };
