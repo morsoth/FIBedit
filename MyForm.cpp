@@ -10,29 +10,27 @@ void MyForm::newFile() {
 }
 
 void MyForm::openFile() {
-    QString filename = QFileDialog::getOpenFileName(this, "Open File:", "~");
-    QFile file(filename);
-    if (file.open(QFile::ReadOnly)) {
+    QString path = QFileDialog::getOpenFileName(this, "Open File:", "~");
+    QFile *nfile = new QFile(path);
+    if (nfile->open(QFile::ReadOnly)) {
         newFile();
-        getCurrentText()->file = &file;
-        QTextStream in(&file);
+        getCurrentText()->file = nfile;
+        QTextStream in(nfile);
         getCurrentText()->setPlainText(in.readAll());
-        file.close();
+        nfile->close();
     }
 }
 
 void MyForm::saveFile() {
-    if (true) {
-        QString filename = QFileDialog::getSaveFileName(this, "Save File As:", "~");
-        getCurrentText()->file = new QFile(filename);
+    if (getCurrentText()->file == nullptr) {
+        QString path = QFileDialog::getSaveFileName(this, "Save File As:");
+        getCurrentText()->file = new QFile(path);
     }
-    else {
-        QString text = getCurrentText()->toPlainText();
-        if (getCurrentText()->file->open(QFile::WriteOnly)) {
-            QTextStream out(getCurrentText()->file);
-            out << text;
-            getCurrentText()->file->close();
-        }
+    QString text = getCurrentText()->toPlainText();
+    if (getCurrentText()->file->open(QFile::WriteOnly)) {
+        QTextStream out(getCurrentText()->file);
+        out << text;
+        getCurrentText()->file->close();
     }
 }
 
