@@ -6,6 +6,7 @@
 #include <QTextStream>
 #include "MyPlainTextEdit.h"
 #include <map>
+#include <QMessageBox>
 
 struct Theme {
     QString themeName;
@@ -40,6 +41,8 @@ public slots:
     int existsFile(const QString &path);
     void showFileSize();
     void showLanguage();
+    void setModified();
+    void setUnmodified();
 
 private slots:
     QWidget *getCurrentTab();

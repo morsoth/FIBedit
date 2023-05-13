@@ -16,8 +16,6 @@ MyForm::MyForm(QWidget *parent) : QMainWindow(parent) {
         "rgb(60, 60, 60)",
         "mononoki NF", 12
     };
-
-    /* setStyleSheet(); */
         
     languages = {
         {"cpp", "C++"},
@@ -85,10 +83,30 @@ void MyForm::showLanguage() {
     emit lang("lang: " + guessLang());
 }
 
+void MyForm::setModified() {
+    if (getCurrentText()->file == nullptr) {
+        getCurrentText()->modified = true;
+        ui.tabWidget->setTabText(ui.tabWidget->currentIndex(), "New File*");
+    }
+    else {
+        getCurrentText()->modified = true;
+        ui.tabWidget->setTabText(ui.tabWidget->currentIndex(), QFileInfo(*(getCurrentText()->file)).fileName() + "*");
+    }
+}
+
+void MyForm::setUnmodified() {
+    getCurrentText()->modified = false;
+    if (getCurrentText()->file == nullptr)
+        ui.tabWidget->setTabText(ui.tabWidget->currentIndex(), "New File");
+    else
+        ui.tabWidget->setTabText(ui.tabWidget->currentIndex(), QFileInfo(*(getCurrentText()->file)).fileName());
+}
+
 void MyForm::newFile() {
     ui.tabWidget->insertTab(ui.tabWidget->count(), new MyPlainTextEdit(this), QIcon(QString("")), "New File");
     ui.tabWidget->setCurrentIndex(ui.tabWidget->count()-1);
     connect(getCurrentText(), SIGNAL(cursorPositionChanged()), this, SLOT(onCursorChanged()));
+    connect(getCurrentText(), SIGNAL(textChanged()), this, SLOT(setModified()));
     getCurrentTab()->setFont(QFont(defaultTheme.fontName, defaultTheme.fontSize));
 }
 
@@ -130,12 +148,31 @@ void MyForm::saveFile() {
         watcher->addPath(getCurrentText()->file->fileName());
         showFileSize();
         showLanguage();
+        setUnmodified();
     }
 }
 
 void MyForm::closeFile() {
     if (ui.tabWidget->count() == 0) return;
+    
     //check if is not saved
+    if (getCurrentText()->modified == true) {
+        auto ret = QMessageBox::warning(this, "Closing unsaved file!",
+                "You are about to close a modified file,\nclosing it will delete your changes",
+                QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel);
+
+        switch (ret) {
+        case QMessageBox::Save:
+            saveFile();
+            return;
+            break;
+        case QMessageBox::Discard:
+            break;
+        case QMessageBox::Cancel:
+            return;
+            break;
+        }
+    }
     if (getCurrentText()->file != nullptr)
         watcher->removePath(getCurrentText()->file->fileName());
     QWidget *tab = getCurrentTab();
@@ -145,7 +182,26 @@ void MyForm::closeFile() {
 
 void MyForm::closeFile(int index) {
     if (ui.tabWidget->count() == 0) return;
+    
     //check if is not saved
+    if (getCurrentText()->modified == true) {
+        auto ret = QMessageBox::warning(this, "Closing unsaved file!",
+                "You are about to close a modified file,\nclosing it will delete your changes",
+                QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel);
+
+        switch (ret) {
+        case QMessageBox::Save:
+            saveFile();
+            break;
+        case QMessageBox::Discard:
+            goto cont;
+            break;
+        case QMessageBox::Cancel:
+            return;
+            break;
+        }
+    }
+cont:
     if (getTextByIndex(index)->file != nullptr)
         watcher->removePath(getTextByIndex(index)->file->fileName());
     ui.tabWidget->removeTab(index);
