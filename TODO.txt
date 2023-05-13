@@ -16,6 +16,9 @@ Preferencias
     Color de fondo
     Color de fuente
     Tipo de fuente
+    Tamaño de fuente
+    
+    Tamaño tabulaciones
 
 Autocompletar
     Parentesis
