@@ -2,9 +2,7 @@
 #### FIB's (un)official text editor.
 <br>
 
-![](img/captura1.png)
-
-![](img/captura2.png)
+![](img/captura3.png)
 
 ## Istallation
 ### Install Qt5
