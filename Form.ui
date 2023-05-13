@@ -77,14 +77,14 @@
       <item>
        <widget class="QLabel" name="label_3">
         <property name="text">
-         <string>line</string>
+         <string>-</string>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QLabel" name="label_4">
         <property name="text">
-         <string>col</string>
+         <string>-</string>
         </property>
        </widget>
       </item>
@@ -336,8 +336,8 @@
      <y>592</y>
     </hint>
     <hint type="destinationlabel">
-     <x>496</x>
-     <y>587</y>
+     <x>773</x>
+     <y>317</y>
     </hint>
    </hints>
   </connection>
@@ -352,8 +352,8 @@
      <y>590</y>
     </hint>
     <hint type="destinationlabel">
-     <x>691</x>
-     <y>586</y>
+     <x>798</x>
+     <y>316</y>
     </hint>
    </hints>
   </connection>
