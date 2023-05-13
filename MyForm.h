@@ -27,4 +27,8 @@ public slots:
     MyPlainTextEdit* getCurrentText();
     MyPlainTextEdit* getTextByIndex(int index);
     MyPlainTextEdit* getTextByPath(const QString &path);
+
+signals:
+    //void line(int l);
+    //void column(int c);
 };
