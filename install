@@ -1,0 +1,6 @@
+#!/bin/sh
+
+case "$1" in
+    "deps")     sudo apt install qt5-qmake qtbase5-dev;;
+    *)          qmake && make && sudo mv fibedit /usr/local/bin/;;
+esac
