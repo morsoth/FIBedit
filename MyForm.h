@@ -22,7 +22,7 @@ class MyForm : public QMainWindow {
 
 public:
     MyForm(QWidget *parent = 0);
-    std::map<QString, QString> languages;
+    std::map<QString, QString> languages; //TODO
 
     Theme defaultTheme;
 
