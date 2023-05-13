@@ -2,6 +2,7 @@
 #include <QFileDialog>
 #include <QFile>
 #include <QTextStream>
+#include "MyPlainTextEdit.h"
 
 class MyForm : public QMainWindow {
     Q_OBJECT
@@ -20,4 +21,5 @@ public slots:
     void closeFile(int index);
 
     QWidget* getCurrentTab();
+    MyPlainTextEdit* getCurrentText();
 };

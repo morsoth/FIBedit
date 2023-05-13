@@ -1,5 +1,4 @@
 #include "MyForm.h"
-#include "MyPlainTextEdit.h"
 
 MyForm::MyForm(QWidget *parent) : QMainWindow(parent) {
     ui.setupUi(this);
@@ -15,8 +14,9 @@ void MyForm::openFile() {
     QFile file(filename);
     if (file.open(QFile::ReadOnly)) {
         newFile();
+        getCurrentText()->file = &file;
         QTextStream in(&file);
-        dynamic_cast<MyPlainTextEdit*>(ui.tabWidget->currentWidget())->setPlainText(in.readAll());
+        getCurrentText()->setPlainText(in.readAll());
         file.close();
     }
 }
@@ -41,4 +41,8 @@ void MyForm::closeFile(int index) {
 
 QWidget* MyForm::getCurrentTab() {
     return dynamic_cast<QWidget*>(ui.tabWidget->currentWidget());
+}
+
+MyPlainTextEdit* MyForm::getCurrentText() {
+    return dynamic_cast<MyPlainTextEdit*>(ui.tabWidget->currentWidget());
 }

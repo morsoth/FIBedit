@@ -1,7 +1,15 @@
 #include "MyPlainTextEdit.h"
 #include <QPlainTextEdit>
 
-MyPlainTextEdit::MyPlainTextEdit(QWidget *parent) : QPlainTextEdit(parent) {}
+MyPlainTextEdit::MyPlainTextEdit(QWidget *parent) : QPlainTextEdit(parent) {
+    file = nullptr;
+    modified = false;
+}
+
+void MyPlainTextEdit::loadFile() {
+    //if (not file.isNull()) return;
+
+}
 
 /* void MyPlainTextEdit::openFile() {
     QString filename = QFileDialog::getOpenFileName(this, "Open File:", "~");
