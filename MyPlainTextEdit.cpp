@@ -7,16 +7,22 @@
 MyPlainTextEdit::MyPlainTextEdit(QWidget *parent) : QPlainTextEdit(parent) {}
 
 void MyPlainTextEdit::openFile() {
-    QString filename = QFileDialog::getOpenFileName(this, "Open File:", "/home");
+    QString filename = QFileDialog::getOpenFileName(this, "Open File:", "~");
     currentFile = new QFile(filename);
-    QTextStream in(currentFile);
-    if (currentFile->open(QFile::ReadWrite))
+    
+    if (currentFile->open(QFile::ReadOnly)) {
+        QTextStream in(currentFile);
         this->document()->setPlainText(in.readAll());
+        currentFile->close();
+    }
 }
 
 void MyPlainTextEdit::saveFile() {
-    //if (currentFile. == NULL) return;
-    //QTextStream out(currentFile);
-    //currentFile->write(out.readAll().toLocal8Bit());
-    currentFile->write("hola pepe");
+    QString text = this->toPlainText();
+        
+    if (currentFile->open(QFile::WriteOnly)) {
+        QTextStream out(currentFile);
+        out << text;
+        currentFile->close();
+    }
 }
