@@ -325,8 +325,42 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>MyForm</sender>
+   <signal>line(QString)</signal>
+   <receiver>label_3</receiver>
+   <slot>setText(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>599</x>
+     <y>592</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>496</x>
+     <y>587</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>MyForm</sender>
+   <signal>column(QString)</signal>
+   <receiver>label_4</receiver>
+   <slot>setText(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>603</x>
+     <y>590</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>691</x>
+     <y>586</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
+  <signal>line(QString)</signal>
+  <signal>column(QString)</signal>
   <slot>newTab()</slot>
   <slot>newFile()</slot>
   <slot>openFile()</slot>
