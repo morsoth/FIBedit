@@ -9,7 +9,6 @@ MyPlainTextEdit::MyPlainTextEdit(QWidget *parent) : QPlainTextEdit(parent) {}
 void MyPlainTextEdit::openFile() {
     QString filename = QFileDialog::getOpenFileName(this, "Open File:", "~");
     currentFile = new QFile(filename);
-    
     if (currentFile->open(QFile::ReadOnly)) {
         QTextStream in(currentFile);
         this->document()->setPlainText(in.readAll());
@@ -18,11 +17,21 @@ void MyPlainTextEdit::openFile() {
 }
 
 void MyPlainTextEdit::saveFile() {
-    QString text = this->toPlainText();
-        
-    if (currentFile->open(QFile::WriteOnly)) {
-        QTextStream out(currentFile);
-        out << text;
-        currentFile->close();
+    if (currentFile == NULL) {
+        QString filename = QFileDialog::getSaveFileName(this, "Save File As:", "~");
+        currentFile = new QFile(filename);
+    } else {
+        QString text = this->toPlainText();
+        if (currentFile->open(QFile::WriteOnly)) {
+            QTextStream out(currentFile);
+            out << text;
+            currentFile->close();
+        }
     }
+}
+
+void MyPlainTextEdit::newFile() {
+    delete currentFile;
+    currentFile = NULL;
+    this->clear();
 }

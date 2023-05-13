@@ -9,8 +9,8 @@ public:
 
 public slots:
     void openFile();
-    //void newFile();
     void saveFile();
+    void newFile();
 
 signals:
 };

@@ -8,4 +8,7 @@ public:
 
 private:
     Ui::MyForm ui;
+
+public slots:
+    void newTab();
 };
