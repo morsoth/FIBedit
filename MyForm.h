@@ -1,8 +1,12 @@
+#pragma once
+
 #include "ui_Form.h"
 #include <QFileDialog>
 #include <QFile>
 #include <QTextStream>
 #include "MyPlainTextEdit.h"
+
+#include <map>
 
 struct Theme {
     QString themeName;
@@ -18,6 +22,7 @@ class MyForm : public QMainWindow {
 
 public:
     MyForm(QWidget *parent = 0);
+    std::map<QString, QString> languages; //TODO
 
     Theme defaultTheme;
 
