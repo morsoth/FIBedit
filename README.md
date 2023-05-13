@@ -1,5 +1,5 @@
 # FIBedit
-####FIB's (un)official text editor.
+#### FIB's (un)official text editor.
 <br>
 
 ![](img/captura.png)
