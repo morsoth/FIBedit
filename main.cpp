@@ -5,11 +5,10 @@
 int main(int argc, char **argv) {
     QApplication app(argc, argv);
     
-    QFile styleFile("stylesheet.qss");
-    styleFile.open(QFile::ReadOnly);
-    QString styleSheet = styleFile.readAll();
+    QFile styleSheet("stylesheet.qss");
+    styleSheet.open(QFile::ReadOnly);
 
-    app.setStyleSheet(styleSheet);
+    app.setStyleSheet(styleSheet.readAll());
 
     MyForm form;
     form.show();

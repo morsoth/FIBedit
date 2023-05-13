@@ -1,10 +1,66 @@
+/* VARIABLES */
+
+@font-color: rgb(209, 209, 209);
+@color1: rgb(36, 36, 36);
+@color2: rgb(45, 45, 45);
+@color3: rgb(60, 60, 60);
+
+/* --------- */
+
 QMainWindow {
-    color: rgb(209, 209, 209);
-    background-color: rgb(45, 45, 45);
-    selection-background-color: rgb(60, 60, 60);
+    color: @font-color;
+    background-color: @color1;
+    padding: 0px;
 }
 
-QTabWidget {
-    color: rgb(209, 209, 209);
-    background-color: rgb(45, 45, 45);
+QTabWidget::pane {
+    padding: 0px;
+}
+
+QTabWidget::tab-bar {
+    background-color: @color1;
+}
+
+QTabWidget{
+	background-color: @color1;
+}
+
+QTabBar::tab {
+    color: @font-color;
+    background-color: @color1;
+    padding: 5px 15px;
+    font-size: 14px;
+}
+
+QTabBar::tab:selected {
+    border-bottom: 2px solid rgb(255, 255, 0);                       
+}
+
+MyPlainTextEdit {
+    color: @font-color;
+    background-color: @color1;
+    padding: 10px;
+}
+
+QMenuBar {
+    color: @font-color;
+    background-color: @color2;
+    font-size: 14px;
+}
+
+QMenuBar::item {
+    padding: 5px;
+}
+
+QMenuBar::item:selected {
+    background-color: @color3;
+}
+
+QMenu {
+    color: @font-color;
+    background-color: @color2;
+}
+
+QMenu:selected {
+    background-color: @color3;
 }
