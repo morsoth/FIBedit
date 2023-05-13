@@ -12,7 +12,7 @@ MyForm::MyForm(QWidget *parent) : QMainWindow(parent) {
         "rgb(45, 45, 45)",
         "rgb(209, 209, 209)",
         "rgb(60, 60, 60)",
-        "mononoki NF", 16
+        "mononoki NF", 12
     };
 
     setStyleSheet(
