@@ -19,7 +19,8 @@ MyForm::MyForm(QWidget *parent) : QMainWindow(parent) {
     setStyleSheet(
         "color: " + defaultTheme.fontColor + ";" + 
         "background-color: " + defaultTheme.backgroundColor + ";" +
-        "selection-background-color: " + defaultTheme.secondaryColor + ";");
+        "selection-background-color: " + defaultTheme.secondaryColor + ";"
+    );
         
     languages = {
         {".cpp", "C++"},

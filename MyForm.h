@@ -28,11 +28,6 @@ public:
 private:
     Ui::MyForm ui;
     QFileSystemWatcher *watcher;
-<<<<<<< HEAD
-=======
-
-    void setupLangMap();
->>>>>>> b82c67d34441946bdb5991fa3d4863d7cb8d6d4f
 
 public slots:
     void newFile();
