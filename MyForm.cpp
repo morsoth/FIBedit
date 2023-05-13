@@ -135,6 +135,7 @@ void MyForm::saveFile() {
         showFileSize();
         showLanguage();
     }
+    fprintf(stderr, "HOLA");
 }
 
 void MyForm::closeFile() {
@@ -196,6 +197,7 @@ MyPlainTextEdit* MyForm::getTextByPath(const QString &path) {
     }
     return nullptr;
 }
+
 int MyForm::existsFile(const QString &path){
     for (int i = 0; i < ui.tabWidget->count(); ++i) {
         if (getTextByIndex(i)->file != nullptr)
