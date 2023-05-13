@@ -12,7 +12,13 @@ void MyForm::newFile() {
 
 void MyForm::openFile() {
     newFile();
-    //ui.tabWidget->currentWidget()->plainTextEdit->setPlainText("hola");
+    QString filename = QFileDialog::getOpenFileName(this, "Open File:", "~");
+    QFile file(filename);
+    if (file.open(QFile::ReadOnly)) {
+        QTextStream in(&file);
+        dynamic_cast<MyPlainTextEdit*>(ui.tabWidget->currentWidget())->setPlainText(in.readAll());
+        file.close();
+    }
 }
 
 void MyForm::saveFile() {

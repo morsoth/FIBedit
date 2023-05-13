@@ -1,4 +1,7 @@
 #include "ui_Form.h"
+#include <QFileDialog>
+#include <QFile>
+#include <QTextStream>
 
 class MyForm : public QMainWindow {
     Q_OBJECT

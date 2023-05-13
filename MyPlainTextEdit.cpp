@@ -1,8 +1,5 @@
 #include "MyPlainTextEdit.h"
 #include <QPlainTextEdit>
-#include <QFileDialog>
-#include <QTextStream>
-#include <QFile>
 
 MyPlainTextEdit::MyPlainTextEdit(QWidget *parent) : QPlainTextEdit(parent) {}
 
