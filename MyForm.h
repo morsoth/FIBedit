@@ -28,7 +28,11 @@ public:
 private:
     Ui::MyForm ui;
     QFileSystemWatcher *watcher;
+<<<<<<< HEAD
     void setupLangs();
+=======
+    void setupLangMap();
+>>>>>>> 2446dc44ba635075e3fdc1a97f6c7532a1b3dd96
 
 public slots:
     void newFile();
@@ -52,4 +56,46 @@ signals:
     void column(const QString &c);
     void fileSize(const QString &s);
     void tabChanged();
+<<<<<<< HEAD
 };
+=======
+};
+
+void MyForm::setupLangMap() {
+    languages = {
+        // c, c++
+        {".cpp", "C++"},
+        {".hpp", "C++"},
+        {".cc", "C++"},
+        {".hh", "C++"},
+        {".c", "C"},
+        {".h", "C"},
+        {".txt", "Plain Text"},
+        {".py", "Python"},
+        {".java", "Java"},
+        {".html", "HTML"},
+        {".css", "CSS"},
+        {".js", "JavaScript"},
+        {".xml", "XML"},
+        {".json", "JSON"},
+        {".sql", "SQL"},
+        {".md", "Markdown"},
+        {".sh", "Shell"},
+        {".bash", "Bash"},
+        {".el", "Emacs Lisp"},
+        {".lua", "Lua"},
+        {".scm", "Scheme"},
+        {".lisp", "Common Lisp"},
+        {".php", "PHP"},
+        {".cs", "C#"},
+        {".go", "Go"},
+        {".kt", "Kotlin"},
+        {".swift", "Swift"},
+        {".rs", "Rust"},
+        {".rb", "Ruby"},
+        {".ts", "TypeScript"},
+        {".org", "Org"},
+        {".yml", "Yaml"},
+    };
+}
+>>>>>>> 2446dc44ba635075e3fdc1a97f6c7532a1b3dd96
