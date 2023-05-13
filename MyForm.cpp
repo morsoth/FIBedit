@@ -3,10 +3,6 @@
 
 MyForm::MyForm(QWidget *parent) : QMainWindow(parent) {
     ui.setupUi(this);
-
-    QTabWidget *tabWidget = new QTabWidget();
-    tabWidget->setTabsClosable(true);
-    tabWidget->setMovable(true);
 }
 
 void MyForm::newTab() {
