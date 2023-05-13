@@ -27,6 +27,7 @@ void MyForm::openFile() {
 }
 
 void MyForm::saveFile() {
+    if (ui.tabWidget->count() == 0) return;
     if (getCurrentText()->file == nullptr) {
         QString path = QFileDialog::getSaveFileName(this, "Save File As:");
         if (path == "") return;
