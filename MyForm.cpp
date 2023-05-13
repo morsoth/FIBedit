@@ -93,7 +93,6 @@ void MyForm::onFileChanged(const QString &path) {
         getTextByPath(path)->setPlainText(in.readAll());
         getTextByPath(path)->file->close();
         watcher->addPath(path);
-        calcFileSize();
     }
 }
 
