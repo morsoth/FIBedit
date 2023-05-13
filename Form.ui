@@ -34,8 +34,8 @@
      <widget class="QTabWidget" name="tabWidget">
       <property name="font">
        <font>
-        <family>Z003</family>
-        <italic>true</italic>
+        <family>Sans</family>
+        <italic>false</italic>
        </font>
       </property>
       <property name="mouseTracking">
