@@ -6,6 +6,7 @@ QMainWindow {
 
 QTabWidget::pane {
     padding: 0px;
+    background-color: rgb(36, 36, 36);
 }
 
 QTabWidget::tab-bar {
@@ -14,6 +15,7 @@ QTabWidget::tab-bar {
 
 QTabWidget{
 	background-color: rgb(36, 36, 36);
+    border-bottom: 1px solid rgb(209, 209, 209);
 }
 
 QTabBar::tab {
@@ -60,4 +62,10 @@ QMenu::item {
 
 QMenu::item:selected {
     background-color: rgb(60, 60, 60);
+}
+
+QLabel {
+    color: rgb(209, 209, 209);
+    font-size: 14px;
+    padding: 5px;
 }
