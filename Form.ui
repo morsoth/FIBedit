@@ -63,7 +63,7 @@
       <item>
        <widget class="QLabel" name="label">
         <property name="text">
-         <string>languaje</string>
+         <string>-</string>
         </property>
        </widget>
       </item>
