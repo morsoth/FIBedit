@@ -121,13 +121,6 @@
     </property>
     <addaction name="separator"/>
     <addaction name="actionPreferences"/>
-    <addaction name="separator"/>
-    <addaction name="actionUndo"/>
-    <addaction name="actionRedo"/>
-    <addaction name="separator"/>
-    <addaction name="actionCopy"/>
-    <addaction name="actionPaste"/>
-    <addaction name="actionCut"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
