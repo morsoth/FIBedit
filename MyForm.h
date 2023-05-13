@@ -17,17 +17,12 @@ struct Theme {
     int fontSize;
 };
 
-std::map<QString, QString> languages = {
-    {".cc", "C++"},
-    {".cpp", "C++"},
-    {".c", "C"}
-};
-
 class MyForm : public QMainWindow {
     Q_OBJECT
 
 public:
     MyForm(QWidget *parent = 0);
+    std::map<QString, QString> languages;
 
     Theme defaultTheme;
 
