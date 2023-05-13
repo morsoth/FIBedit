@@ -31,6 +31,7 @@ private:
     QString guessLang();
 
 public slots:
+    void showHelp();
     void newFile();
     void openFile();
     void saveFile();

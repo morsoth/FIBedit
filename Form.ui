@@ -32,6 +32,18 @@
     </property>
     <item row="0" column="0">
      <widget class="QTabWidget" name="tabWidget">
+      <property name="font">
+       <font>
+        <family>Z003</family>
+        <italic>true</italic>
+       </font>
+      </property>
+      <property name="mouseTracking">
+       <bool>false</bool>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::TabFocus</enum>
+      </property>
       <property name="styleSheet">
        <string notr="true"/>
       </property>
@@ -385,6 +397,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>actionHelp</sender>
+   <signal>triggered()</signal>
+   <receiver>MyForm</receiver>
+   <slot>showHelp()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <signal>line(QString)</signal>
@@ -397,5 +425,6 @@
   <slot>saveFile()</slot>
   <slot>closeFile()</slot>
   <slot>closeFile(int)</slot>
+  <slot>showHelp()</slot>
  </slots>
 </ui>

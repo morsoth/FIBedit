@@ -106,6 +106,18 @@ void MyForm::setUnmodified() {
         ui.tabWidget->setTabText(ui.tabWidget->currentIndex(), QFileInfo(*(getCurrentText()->file)).fileName());
 }
 
+void MyForm::showHelp(){
+    QMessageBox msgBox;
+    msgBox.setText("Este es un mensaje informativo.");
+    msgBox.setInformativeText("Más detalles aquí.");
+    msgBox.setStandardButtons(QMessageBox::Ok);
+    msgBox.setDefaultButton(QMessageBox::Ok);
+    msgBox.setIcon(QMessageBox::Information);
+    msgBox.setWindowTitle("Información");
+    msgBox.setWindowFlags(msgBox.windowFlags() | Qt::WindowCloseButtonHint); // Agregar el botón de cerrar
+
+    msgBox.exec();
+}
 void MyForm::newFile() {
     ui.tabWidget->insertTab(ui.tabWidget->count(), new MyPlainTextEdit(this), QIcon(QString("")), "New File");
     ui.tabWidget->setCurrentIndex(ui.tabWidget->count()-1);
