@@ -61,9 +61,11 @@ void MyForm::closeFile(int index) {
 
 void MyForm::onFileChanged(const QString &path) {
     if (getTextByPath(path)->file->open(QFile::ReadOnly)) {
+        watcher->removePath(path);
         QTextStream in(getTextByPath(path)->file);
         getTextByPath(path)->setPlainText(in.readAll());
         getTextByPath(path)->file->close();
+        watcher->addPath(path);
     }
 }
 
