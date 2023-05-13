@@ -6,7 +6,7 @@ MyForm::MyForm(QWidget *parent) : QMainWindow(parent) {
     connect(watcher, SIGNAL(fileChanged(QString)), this, SLOT(onFileChanged(QString)));
 
     defaultTheme = {
-        "default", "rgb(45, 45, 45)", "rgb(209, 209, 209)", "rgb(60, 60, 60)", "JetBrainsMonoNL NF", 16
+        "default", "rgb(45, 45, 45)", "rgb(209, 209, 209)", "rgb(60, 60, 60)", "JetBrainsMonoNL NF", 14
     };
 
     setStyleSheet(
