@@ -5,14 +5,14 @@ MyForm::MyForm(QWidget *parent) : QMainWindow(parent) {
     watcher = new QFileSystemWatcher(this);
     connect(watcher, SIGNAL(fileChanged(QString)), this, SLOT(onFileChanged(QString)));
 
-    theme = {
-        "default", "rgb(34, 34, 34)", "rgb(209, 209, 209)", "rgb(45, 45, 45)"
+    defaultTheme = {
+        "default", "rgb(45, 45, 45)", "rgb(209, 209, 209)", "rgb(60, 60, 60)", "", 16
     };
 
     setStyleSheet(
-        "color: " + theme.fontColor + ";" + 
-        "background-color: " + theme.backgroundColor + ";" +
-        "selection-background-color: " + theme.secondaryColor + ";"
+        "color: " + defaultTheme.fontColor + ";" + 
+        "background-color: " + defaultTheme.backgroundColor + ";" +
+        "selection-background-color: " + defaultTheme.secondaryColor + ";"
     );
 }
 
