@@ -2,6 +2,7 @@
 
 #include "QPlainTextEdit"
 #include <QFile>
+#include <QDateTime>
 
 class MyPlainTextEdit : public QPlainTextEdit {
     Q_OBJECT
@@ -9,6 +10,7 @@ class MyPlainTextEdit : public QPlainTextEdit {
 public:
     MyPlainTextEdit(QWidget *parent);
     QFile *file;
+    QDateTime lastModified;
     bool modified;
 
     void loadFile();

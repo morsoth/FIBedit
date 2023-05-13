@@ -2,6 +2,9 @@
 
 MyForm::MyForm(QWidget *parent) : QMainWindow(parent) {
     ui.setupUi(this);
+    timer = new QTimer();
+    connect(timer, &QTimer::timeout, this, &MyForm::checkFileChanged);
+    timer->start(5);
 }
 
 void MyForm::newFile() {
@@ -18,6 +21,7 @@ void MyForm::openFile() {
         QTextStream in(nfile);
         getCurrentText()->setPlainText(in.readAll());
         nfile->close();
+        getCurrentText()->lastModified = getCurrentText()->file->fileTime(QFileDevice::FileModificationTime);
     }
 }
 
@@ -31,6 +35,7 @@ void MyForm::saveFile() {
         QTextStream out(getCurrentText()->file);
         out << text;
         getCurrentText()->file->close();
+        getCurrentText()->lastModified = getCurrentText()->file->fileTime(QFileDevice::FileModificationTime);
     }
 }
 
@@ -46,6 +51,12 @@ void MyForm::closeFile(int index) {
     if (ui.tabWidget->count() == 0) return;
     //check if is not saved
     ui.tabWidget->removeTab(index);
+}
+
+void MyForm::checkFileChanged() {
+    if (ui.tabWidget->count() == 0) return;
+    if (getCurrentText()->lastModified != getCurrentText()->file->fileTime(QFileDevice::FileModificationTime))
+        fprintf(stderr, "paco que grande!!\n");
 }
 
 QWidget* MyForm::getCurrentTab() {

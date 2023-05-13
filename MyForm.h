@@ -2,6 +2,7 @@
 #include <QFileDialog>
 #include <QFile>
 #include <QTextStream>
+#include <QTimer>
 #include "MyPlainTextEdit.h"
 
 class MyForm : public QMainWindow {
@@ -12,6 +13,7 @@ public:
 
 private:
     Ui::MyForm ui;
+    QTimer *timer;
 
 public slots:
     void newFile();
@@ -19,6 +21,7 @@ public slots:
     void saveFile();
     void closeFile();
     void closeFile(int index);
+    void checkFileChanged();
 
     QWidget* getCurrentTab();
     MyPlainTextEdit* getCurrentText();
