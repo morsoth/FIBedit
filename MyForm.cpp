@@ -6,7 +6,7 @@ MyForm::MyForm(QWidget *parent) : QMainWindow(parent) {
     connect(watcher, SIGNAL(fileChanged(QString)), this, SLOT(onFileChanged(QString)));
 
     defaultTheme = {
-        "default", "rgb(45, 45, 45)", "rgb(209, 209, 209)", "rgb(60, 60, 60)", "", 16
+        "default", "rgb(45, 45, 45)", "rgb(209, 209, 209)", "rgb(60, 60, 60)", "JetBrainsMonoNL NF", 16
     };
 
     setStyleSheet(
@@ -19,6 +19,7 @@ MyForm::MyForm(QWidget *parent) : QMainWindow(parent) {
 void MyForm::newFile() {
     ui.tabWidget->insertTab(ui.tabWidget->count(), new MyPlainTextEdit(this), QIcon(QString("")), "New File");
     ui.tabWidget->setCurrentIndex(ui.tabWidget->count()-1);
+    getCurrentTab()->setFont(QFont(defaultTheme.fontName, defaultTheme.fontSize));
 }
 
 void MyForm::openFile() {
