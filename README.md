@@ -1,27 +1,25 @@
-#+options: \n:t numbers:nil author:nil timestamp:nil
+# FIBedit
+####FIB's (un)official text editor.
+<br>
 
-* FIBedit
-/FIB's (un)official text editor./
+![](img/captura.png)
 
-#+attr_html: :width 1000
-[[file:img/captura.png]]
-
-** Istallation
-*** Install Qt5
+## Istallation
+### Install Qt5
 Qt5 libraries are required to compile and run fibedit.
 
-#+begin_src shell
+```sh
 sudo apt update
 sudo apt install qt5-qmake qtbase5-dev
-#+end_src
+```
 
-*** Compile
-#+begin_src shell
+### Compile
+```sh
 qmake
 make
-#+end_src
+```
 
-*** Execute
-#+begin_src shell
+### Execute
+```sh
 ./fibedit
-#+end_src
+```
