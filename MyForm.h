@@ -10,7 +10,11 @@ private:
     Ui::MyForm ui;
 
 public slots:
-    void newTab();
-    void closeTab();
-    void closeTab(int index);
+    void newFile();
+    void openFile();
+    void saveFile();
+    void closeFile();
+    void closeFile(int index);
+
+    QWidget* getCurrentTab();
 };

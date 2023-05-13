@@ -6,7 +6,7 @@
 
 MyPlainTextEdit::MyPlainTextEdit(QWidget *parent) : QPlainTextEdit(parent) {}
 
-void MyPlainTextEdit::openFile() {
+/* void MyPlainTextEdit::openFile() {
     QString filename = QFileDialog::getOpenFileName(this, "Open File:", "~");
     currentFile = new QFile(filename);
     if (currentFile->open(QFile::ReadOnly)) {
@@ -34,4 +34,4 @@ void MyPlainTextEdit::newFile() {
     delete currentFile;
     currentFile = NULL;
     this->clear();
-}
+} */
