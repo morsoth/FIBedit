@@ -115,7 +115,6 @@ void MyForm::newFile() {
     ui.tabWidget->setCurrentIndex(ui.tabWidget->count()-1);
     connect(getCurrentText(), SIGNAL(cursorPositionChanged()), this, SLOT(onCursorChanged()));
     connect(getCurrentText(), SIGNAL(textChanged()), this, SLOT(setModified()));
-    getCurrentTab()->setFont(QFont(defaultTheme.fontName, defaultTheme.fontSize));
     setUnmodified();
 }
 
