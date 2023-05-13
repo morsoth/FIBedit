@@ -34,7 +34,14 @@ QTabBar::tab:selected {
 MyPlainTextEdit {
     color: rgb(209, 209, 209);
     background-color: rgb(36, 36, 36);
-    padding: 10px;
+}
+
+MyPlainTextEdit::ExtraSelection {
+    color: rgb(255, 0, 0);
+}
+
+LineNumberArea {
+    background-color: rgb(255, 0, 0);
 }
 
 QMenuBar {
