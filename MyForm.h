@@ -42,6 +42,6 @@ private slots:
     MyPlainTextEdit *getTextByPath(const QString &path);
 
 signals:
-    void line(QString l);
-    void column(QString c);
+    void line(const QString &l);
+    void column(const QString &c);
 };
