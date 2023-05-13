@@ -1,3 +1,5 @@
+#pragma once
+
 #include <QPlainTextEdit>
 
 class MyPlainTextEdit : public QPlainTextEdit {
