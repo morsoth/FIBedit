@@ -12,4 +12,5 @@ public:
     MyPlainTextEdit(QWidget *parent);
     QFile *file;
     bool modified;
+    bool saved;
 };

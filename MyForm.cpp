@@ -84,6 +84,10 @@ void MyForm::showLanguage() {
 }
 
 void MyForm::setModified() {
+    if (getCurrentText()->saved) {
+        getCurrentText()->saved = false;
+        return;
+    }
     if (getCurrentText()->file == nullptr) {
         getCurrentText()->modified = true;
         ui.tabWidget->setTabText(ui.tabWidget->currentIndex(), "New File*");
@@ -108,6 +112,7 @@ void MyForm::newFile() {
     connect(getCurrentText(), SIGNAL(cursorPositionChanged()), this, SLOT(onCursorChanged()));
     connect(getCurrentText(), SIGNAL(textChanged()), this, SLOT(setModified()));
     getCurrentTab()->setFont(QFont(defaultTheme.fontName, defaultTheme.fontSize));
+    setUnmodified();
 }
 
 void MyForm::openFile() {
@@ -129,6 +134,7 @@ void MyForm::openFile() {
         watcher->addPath(nfile->fileName());
         showFileSize();
         showLanguage();
+        setUnmodified();
     }
 }
 
@@ -149,6 +155,7 @@ void MyForm::saveFile() {
         showFileSize();
         showLanguage();
         setUnmodified();
+        getCurrentText()->saved = true;
     }
 }
 

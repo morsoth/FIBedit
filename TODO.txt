@@ -3,7 +3,7 @@ Preferencias
     Color de fuente
     Tipo de fuente
     Tamaño de fuente
-    Tamaño tabulaciones
+    Tamaño tabulacionesa
 
 Autocompletar
     Parentesis
