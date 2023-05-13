@@ -23,8 +23,8 @@ public slots:
     void closeFile(int index);
     void onFileChanged(const QString &path);
 
-    inline QWidget* getCurrentTab();
-    inline MyPlainTextEdit* getCurrentText();
-    inline MyPlainTextEdit* getTextByIndex(int index);
+    QWidget* getCurrentTab();
+    MyPlainTextEdit* getCurrentText();
+    MyPlainTextEdit* getTextByIndex(int index);
     MyPlainTextEdit* getTextByPath(const QString &path);
 };

@@ -64,15 +64,15 @@ void MyForm::onFileChanged(const QString &path) {
     }
 }
 
-inline QWidget* MyForm::getCurrentTab() {
+QWidget* MyForm::getCurrentTab() {
     return dynamic_cast<QWidget*>(ui.tabWidget->currentWidget());
 }
 
-inline MyPlainTextEdit* MyForm::getCurrentText() {
+MyPlainTextEdit* MyForm::getCurrentText() {
     return dynamic_cast<MyPlainTextEdit*>(ui.tabWidget->currentWidget());
 }
 
-inline MyPlainTextEdit* MyForm::getTextByIndex(int index) {
+MyPlainTextEdit* MyForm::getTextByIndex(int index) {
     return dynamic_cast<MyPlainTextEdit*>(ui.tabWidget->widget(index));
 }
 
