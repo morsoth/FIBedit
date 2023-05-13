@@ -11,10 +11,10 @@ void MyForm::newFile() {
 }
 
 void MyForm::openFile() {
-    newFile();
     QString filename = QFileDialog::getOpenFileName(this, "Open File:", "~");
     QFile file(filename);
     if (file.open(QFile::ReadOnly)) {
+        newFile();
         QTextStream in(&file);
         dynamic_cast<MyPlainTextEdit*>(ui.tabWidget->currentWidget())->setPlainText(in.readAll());
         file.close();
