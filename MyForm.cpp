@@ -2,11 +2,6 @@
 
 MyForm::MyForm(QWidget *parent) : QMainWindow(parent) {
     ui.setupUi(this);
-    /*
-    timer = new QTimer();
-    connect(timer, &QTimer::timeout, this, &MyForm::checkFileChanged);
-    timer->start(5);
-    */
     watcher = new QFileSystemWatcher(this);
     connect(watcher, SIGNAL(fileChanged(QString)), this, SLOT(onFileChanged(QString)));
 }
@@ -26,7 +21,6 @@ void MyForm::openFile() {
         getCurrentText()->setPlainText(in.readAll());
         nfile->close();
         watcher->addPath(nfile->fileName());
-        //getCurrentText()->lastModified = getCurrentText()->file->fileTime(QFileDevice::FileModificationTime);
     }
 }
 
@@ -40,7 +34,7 @@ void MyForm::saveFile() {
         QTextStream out(getCurrentText()->file);
         out << text;
         getCurrentText()->file->close();
-        //getCurrentText()->lastModified = getCurrentText()->file->fileTime(QFileDevice::FileModificationTime);
+        watcher->addPath(nfile->fileName());
     }
 }
 
@@ -55,6 +49,7 @@ void MyForm::closeFile() {
 
 void MyForm::closeFile(int index) {
     if (ui.tabWidget->count() == 0) return;
+    watcher->removePath(getTextByIndex(index)->file->fileName());
     //check if is not saved
     ui.tabWidget->removeTab(index);
 }
@@ -69,25 +64,21 @@ void MyForm::onFileChanged(const QString &path) {
     }
 }
 
-/*
-void MyForm::checkFileChanged() {
-    if (ui.tabWidget->count() == 0) return;
-    if (getCurrentText()->lastModified != getCurrentText()->file->fileTime(QFileDevice::FileModificationTime))
-        fprintf(stderr, "paco que grande!!\n");
-}
-*/
-
-QWidget* MyForm::getCurrentTab() {
+inline QWidget* MyForm::getCurrentTab() {
     return dynamic_cast<QWidget*>(ui.tabWidget->currentWidget());
 }
 
-MyPlainTextEdit* MyForm::getCurrentText() {
+inline MyPlainTextEdit* MyForm::getCurrentText() {
     return dynamic_cast<MyPlainTextEdit*>(ui.tabWidget->currentWidget());
+}
+
+inline MyPlainTextEdit* MyForm::getTextByIndex(int index) {
+    return dynamic_cast<MyPlainTextEdit*>(ui.tabWidget->widget(index));
 }
 
 MyPlainTextEdit* MyForm::getTextByPath(const QString &path) {
     for (int i = 0; i < ui.tabWidget->count(); ++i) {
-        if (dynamic_cast<MyPlainTextEdit*>(ui.tabWidget->widget(i))->file->fileName() == path)
-            return dynamic_cast<MyPlainTextEdit*>(ui.tabWidget->widget(i));
+        if (getTextByIndex(i)->file->fileName() == path)
+            return getTextByIndex(i);
     }
 }

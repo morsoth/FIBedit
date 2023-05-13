@@ -13,7 +13,6 @@ public:
 
 private:
     Ui::MyForm ui;
-    //QTimer *timer;
     QFileSystemWatcher *watcher;
 
 public slots:
@@ -23,9 +22,9 @@ public slots:
     void closeFile();
     void closeFile(int index);
     void onFileChanged(const QString &path);
-    //void checkFileChanged();
 
-    QWidget* getCurrentTab();
-    MyPlainTextEdit* getCurrentText();
+    inline QWidget* getCurrentTab();
+    inline MyPlainTextEdit* getCurrentText();
+    inline MyPlainTextEdit* getTextByIndex(int index);
     MyPlainTextEdit* getTextByPath(const QString &path);
 };
