@@ -24,8 +24,9 @@ QTabBar::tab {
 }
 
 QTabBar::tab:selected {
+    color: rgb(250, 210, 60);
     background-color: rgb(45, 45, 45);
-    border-bottom: 2px solid rgb(255, 255, 0);                       
+    border-bottom: 2px solid rgb(250, 210, 60);                       
 }
 
 MyPlainTextEdit {
