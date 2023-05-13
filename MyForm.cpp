@@ -70,7 +70,7 @@ void MyForm::closeFile() {
 
 void MyForm::closeFile(int index) {
     if (ui.tabWidget->count() == 0) return;
-    if (getCurrentText()->file != nullptr)
+    if (getTextByIndex(index)->file != nullptr)
         watcher->removePath(getTextByIndex(index)->file->fileName());
     //check if is not saved
     ui.tabWidget->removeTab(index);
