@@ -22,7 +22,18 @@ void MyForm::openFile() {
 }
 
 void MyForm::saveFile() {
-
+    if (true) {
+        QString filename = QFileDialog::getSaveFileName(this, "Save File As:", "~");
+        getCurrentText()->file = new QFile(filename);
+    }
+    else {
+        QString text = getCurrentText()->toPlainText();
+        if (getCurrentText()->file->open(QFile::WriteOnly)) {
+            QTextStream out(getCurrentText()->file);
+            out << text;
+            getCurrentText()->file->close();
+        }
+    }
 }
 
 void MyForm::closeFile() {

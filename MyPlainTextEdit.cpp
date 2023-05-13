@@ -11,17 +11,7 @@ void MyPlainTextEdit::loadFile() {
 
 }
 
-/* void MyPlainTextEdit::openFile() {
-    QString filename = QFileDialog::getOpenFileName(this, "Open File:", "~");
-    currentFile = new QFile(filename);
-    if (currentFile->open(QFile::ReadOnly)) {
-        QTextStream in(currentFile);
-        this->document()->setPlainText(in.readAll());
-        currentFile->close();
-    }
-}
-
-void MyPlainTextEdit::saveFile() {
+/* void MyPlainTextEdit::saveFile() {
     if (currentFile == NULL) {
         QString filename = QFileDialog::getSaveFileName(this, "Save File As:", "~");
         currentFile = new QFile(filename);
@@ -33,10 +23,4 @@ void MyPlainTextEdit::saveFile() {
             currentFile->close();
         }
     }
-}
-
-void MyPlainTextEdit::newFile() {
-    delete currentFile;
-    currentFile = NULL;
-    this->clear();
 } */
