@@ -13,10 +13,8 @@ void MyForm::newTab() {
 void MyForm::closeTab() {
     if (ui.tabWidget->count() == 0) return;
     QWidget *tab = dynamic_cast<QWidget*>(ui.tabWidget->currentWidget());
-    disconnect(tab, 0, 0, 0);
     tab->close();
     delete tab;
-    tab = NULL;
 }
 
 void MyForm::closeTab(int index) {
