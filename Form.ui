@@ -373,11 +373,28 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>MyForm</sender>
+   <signal>lang(QString)</signal>
+   <receiver>label</receiver>
+   <slot>setText(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>196</x>
+     <y>593</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>101</x>
+     <y>584</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <signal>line(QString)</signal>
   <signal>column(QString)</signal>
   <signal>fileSize(QString)</signal>
+  <signal>lang(QString)</signal>
   <slot>newTab()</slot>
   <slot>newFile()</slot>
   <slot>openFile()</slot>
