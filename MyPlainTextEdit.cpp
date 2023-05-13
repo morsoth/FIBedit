@@ -77,7 +77,7 @@ void MyPlainTextEdit::highlightCurrentLine()
     if (!isReadOnly()) {
         QTextEdit::ExtraSelection selection;
 
-        QColor lineColor = QColor("#363636");
+        QColor lineColor = QColor("#2d2d2d");
 
         selection.format.setBackground(lineColor);
         selection.format.setProperty(QTextFormat::FullWidthSelection, true);
@@ -96,7 +96,7 @@ void MyPlainTextEdit::highlightCurrentLine()
 void MyPlainTextEdit::lineNumberAreaPaintEvent(QPaintEvent *event)
 {
     QPainter painter(lineNumberArea);
-    painter.fillRect(event->rect(), QColor("#242424"));
+    painter.fillRect(event->rect(), "#242424");
 
 //![extraAreaPaintEvent_0]
 
@@ -111,7 +111,7 @@ void MyPlainTextEdit::lineNumberAreaPaintEvent(QPaintEvent *event)
     while (block.isValid() && top <= event->rect().bottom()) {
         if (block.isVisible() && bottom >= event->rect().top()) {
             QString number = QString::number(blockNumber + 1);
-            painter.setPen(QColor("#363636"));
+            painter.setPen(QColor("#505050"));
             painter.drawText(0, top, lineNumberArea->width(), fontMetrics().height(),
                              Qt::AlignRight, number);
         }
