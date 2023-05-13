@@ -113,7 +113,7 @@ void MyForm::openFile() {
         getCurrentText()->setPlainText(in.readAll());
         nfile->close();
         watcher->addPath(nfile->fileName());
-        //showFileSize();
+        showFileSize();
         showLanguage();
     }
 }
