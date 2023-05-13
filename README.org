@@ -1,6 +1,6 @@
 #+options: \n:t numbers:nil author:nil timestamp:nil
 
-* fibedit
+* FIBedit
 /FIB's (un)official text editor./
 
 #+attr_html: :width 1000
