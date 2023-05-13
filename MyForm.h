@@ -4,11 +4,19 @@
 #include <QTextStream>
 #include "MyPlainTextEdit.h"
 
+struct Theme {
+    QString themeName;
+    QString backgroundColor;
+    QString fontColor;
+};
+
 class MyForm : public QMainWindow {
     Q_OBJECT
 
 public:
     MyForm(QWidget *parent = 0);
+
+    Theme theme;
 
 private:
     Ui::MyForm ui;

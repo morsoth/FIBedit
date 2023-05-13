@@ -4,6 +4,15 @@ MyForm::MyForm(QWidget *parent) : QMainWindow(parent) {
     ui.setupUi(this);
     watcher = new QFileSystemWatcher(this);
     connect(watcher, SIGNAL(fileChanged(QString)), this, SLOT(onFileChanged(QString)));
+
+    theme = {
+        "default", "rgb(21, 21, 21)", "rgb(209, 209, 209)"
+    };
+
+    setStyleSheet(
+        "color: " + theme.fontColor + ";" + 
+        "background-color: " + theme.backgroundColor + ";"
+    );
 }
 
 void MyForm::newFile() {
